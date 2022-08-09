@@ -4,7 +4,7 @@
 
 ## Using Nextflow on Katana
 
-For guidance on modifying [nf-params.json](nf-params.json), see [the official documentation](https://nf-co.re/rnaseq/usage), which includes a interface to generate a new params file.
+By default, we use Ensembl GRCh37. See [here](https://github.com/nf-core/rnaseq/blob/master/conf/igenomes.config) for alternatives, major human and mouse assemblies are installed on Katana. For guidance on modifying [nf-params.json](nf-params.json), see [the official documentation](https://nf-co.re/rnaseq/usage), which includes an interface to generate new params files.
 
 1. Create a new project folder:
 ```bash
@@ -12,7 +12,7 @@ mkdir -p "/srv/scratch/genomicwf/$USER/<your-project-name>" && cd "$_"
 git clone https://github.com/WalshKieran/rnaseq-run.git .
 ```
 2. Download your data (optional):
-If you have a curl command from Ramaciotti, call it here and note the folder name for the next step
+If you have a curl command from Ramaciotti, call it here and note the folder name for the next step.
 
 3. Create your samplesheet: a simple script is provided to convert any folder containing [illumina naming convention](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm) fastqs to a samplesheet, but it is [straightforward](https://nf-co.re/rnaseq/usage#samplesheet-input) to create one manually:
 ```bash
