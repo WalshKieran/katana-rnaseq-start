@@ -1,0 +1,7 @@
+nextflow
+.nextflow*
+work/
+results/
+run.pbs.*
+samplesheet.csv
+.DS_Store
