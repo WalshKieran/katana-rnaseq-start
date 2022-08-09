@@ -16,7 +16,7 @@ if you have a curl command from Ramaciotti, call it here and note the folder nam
 
 3. Create your samplesheet: a simple script is provided to convert any folder containing [illumina naming convention](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm) fastqs to a samplesheet, but it is [straightforward](https://nf-co.re/rnaseq/usage#samplesheet-input) to create one manually:
 ```bash
-./ramac_to_samplesheet.py "<your/data/folder>" > samplesheet.csv
+python3 ramac_to_samplesheet.py "<your/data/folder>" > samplesheet.csv
 head samplesheet.csv # verify non-empty, update sample names
 ```
 
