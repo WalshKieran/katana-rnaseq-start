@@ -12,7 +12,7 @@ mkdir -p "/srv/scratch/genomicwf/$USER/<your-project-name>" && cd "$_"
 git clone https://github.com/WalshKieran/rnaseq-run.git .
 ```
 2. Download your data (optional):
-If you have a curl command from Ramaciotti, call it here and note the folder name for the next step.
+if you have a curl command from Ramaciotti, call it here and note the folder name for the next step.
 
 3. Create your samplesheet: a simple script is provided to convert any folder containing [illumina naming convention](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm) fastqs to a samplesheet, but it is [straightforward](https://nf-co.re/rnaseq/usage#samplesheet-input) to create one manually:
 ```bash
@@ -28,7 +28,7 @@ To check on a running Katana workflow, use `qstat -u $USER` and `cat .nextflow.l
 
 5. Move your results out of temporary folder. Consider deleting your temporary project folder if you are done.
 ```bash
-mv "/srv/scratch/genomicwf/$USER/<your-project-name>/results /srv/scratch/$USER/<your-project-name>"
+mv "/srv/scratch/genomicwf/$USER/<your-project-name>/results/* /srv/scratch/$USER/<your-project-name>"
 #rm -r "/srv/scratch/genomicwf/$USER/<your-project-name>"
 ```
 
