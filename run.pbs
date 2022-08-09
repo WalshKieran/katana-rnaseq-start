@@ -15,4 +15,4 @@ unset JAVA_TOOL_OPTIONS
 curl -s https://get.nextflow.io | bash
 
 export NXF_OPTS='-Xms1g -Xmx4g'
-./nextflow run nf-core/rnaseq -params-file nf-params.json --outdir results --igenomes_base '/data/bio/ignomes/references' -resume
+./nextflow run nf-core/rnaseq -params-file nf-params.json --outdir results --igenomes_base '/data/bio/igenomes/references' -resume
