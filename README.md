@@ -9,7 +9,7 @@ By default, we use Ensembl GRCh37. See [here](https://github.com/nf-core/rnaseq/
 1. Create a new project folder:
 ```bash
 mkdir -p "/srv/scratch/genomicwf/$USER/<your-project-name>" && cd "$_"
-git clone https://github.com/WalshKieran/rnaseq-run.git .
+git clone https://github.com/WalshKieran/katana-rnaseq-start.git .
 ```
 2. Download your data (optional):
 if you have a curl command from Ramaciotti, call it here and note the folder name for the next step.
