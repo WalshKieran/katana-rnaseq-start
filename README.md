@@ -16,8 +16,11 @@ if you have a curl command from Ramaciotti, call it here and note the folder nam
 
 3. Create your samplesheet: a simple script is provided to convert any folder containing [illumina naming convention](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm) fastqs to a samplesheet, but it is [straightforward](https://nf-co.re/rnaseq/usage#samplesheet-input) to create one manually:
 ```bash
-python3 ramac_to_samplesheet.py "<your/data/folder>" > samplesheet.csv
+wget https://raw.githubusercontent.com/nf-core/rnaseq/master/bin/fastq_dir_to_samplesheet.py
+python3 fastq_dir_to_samplesheet.py --recursive "</srv/scratch/your/data>" ./samplesheet.csv
 head samplesheet.csv # verify non-empty, update sample names
+
+# Not usually required, but you can manually input the read suffixes using: -r1 '_1.fastq.gz' -r2 '_2.fastq.gz'
 ```
 
 4. Submit batch job to Katana (and note the returned number):
@@ -35,6 +38,9 @@ mv "/srv/scratch/genomicwf/$USER/<your-project-name>/results/* /srv/scratch/$USE
 > **Note**
 > The default resource allocations for nf-core are extremely generous and these instructions typically create hundreds of jobs.
 > This may impact your Katana priority.
+
+> **Note**
+> If you wish to run a different nf-core pipeline, you can edit run.pbs. For non nf-core pipelines, parameters like igenomes_base and outdir likely need to be removed.
 
 > **Warning**
 > Anything stored in the temporary directory /srv/scratch/genomicwf may be cleared after 3 days. Nextflow can generate over 300GB of ./work files, this directory gives you the option to fix parameters and resume. If your lab has access to more storage, feel free to use that instead.

@@ -5,6 +5,16 @@
 #PBS -j oe
 
 cd $PBS_O_WORKDIR
+IGENOMES='/data/bio/igenomes/references'
 
+# Load nextflow module
 module add java/11.0.17_8-openjdk nextflow/22.10.7
-nextflow run nf-core/rnaseq -params-file nf-params.json --outdir results --igenomes_base '/data/bio/igenomes/references' -resume
+
+# Start nextflow
+nextflow run nf-core/rnaseq     `# Name of nf-core pipeline` \
+    -latest                     `# Always fetch latest so -r doesn't fail` \
+    -params-file nf-params.json `# Params file (edited by you)` \
+    -resume                     `# Outdated, but allows specifying e.g. hg38 in nf-params.json` \
+    -r 3.11.1                   `# Could be outdated, but good practice` \
+    --outdir results            `# Results (can be in your own scratch if you wish)` \
+    --igenomes_base $IGENOMES   `# Outdated, but allows specifying e.g. hg38 in nf-params.json` \
