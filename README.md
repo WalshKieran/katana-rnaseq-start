@@ -37,7 +37,7 @@ mv "/srv/scratch/genomicwf/$USER/<your-project-name>/results/* /srv/scratch/$USE
 > This may impact your Katana priority.
 
 > **Warning**
-> Anything stored in the temporary directory /srv/scratch/genomicwf may be cleared after 2 days. Nextflow can generate over 300GB of ./work files, this directory gives you the option to fix parameters and resume. If your lab has access to more storage, feel free to use that instead.
+> Anything stored in the temporary directory /srv/scratch/genomicwf may be cleared after 3 days. Nextflow can generate over 300GB of ./work files, this directory gives you the option to fix parameters and resume. If your lab has access to more storage, feel free to use that instead.
 
 - [x] Downloaded iGenomes subset
 - [x] Test with various datasets
