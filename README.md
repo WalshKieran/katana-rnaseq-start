@@ -14,13 +14,10 @@ git clone https://github.com/WalshKieran/katana-rnaseq-start.git .
 2. Download your data (optional):
 if you have a curl command from Ramaciotti, call it here and note the folder name for the next step.
 
-3. Create your samplesheet: a simple script is provided to convert any folder containing [illumina naming convention](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm) fastqs to a samplesheet, but it is [straightforward](https://nf-co.re/rnaseq/usage#samplesheet-input) to create one manually:
+3. Create your samplesheet: The only required inputs for nf-core/rnaseq are a samplesheet of fastq files, a genome, and an annotation. Creating the samplesheet automatically via script is simple since Ramaciotti outputs usually follow the [illumina naming convention](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm), but you can also manually define file endings using e.g.'-r1 _1.fastq.gz -r2 _2.fastq.gz'. Strandedness can be determined automatically, set it manually using e.g. '-st reverse'.
 ```bash
 wget https://raw.githubusercontent.com/nf-core/rnaseq/master/bin/fastq_dir_to_samplesheet.py
 python3 fastq_dir_to_samplesheet.py --recursive "</srv/scratch/your/data>" ./samplesheet.csv
-head samplesheet.csv # verify non-empty, update sample names
-
-# Not usually required, but you can manually input the read suffixes using: -r1 '_1.fastq.gz' -r2 '_2.fastq.gz'
 ```
 
 4. Submit batch job to Katana (and note the returned number):
