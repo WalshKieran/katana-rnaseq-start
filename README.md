@@ -39,9 +39,6 @@ mv "/srv/scratch/genomicwf/$USER/<your-project-name>/results/* /srv/scratch/$USE
 > The default resource allocations for nf-core are extremely generous and these instructions typically create hundreds of jobs.
 > This may impact your Katana priority.
 
-> **Note**
-> If you wish to run a different nf-core pipeline, you can edit run.pbs. For non nf-core pipelines, parameters like igenomes_base and outdir likely need to be removed.
-
 > **Warning**
 > Anything stored in the temporary directory /srv/scratch/genomicwf may be cleared after 3 days. Nextflow can generate over 300GB of ./work files, this directory gives you the option to fix parameters and resume. If your lab has access to more storage, feel free to use that instead.
 
