@@ -1,14 +1,19 @@
-# nf-core RNASeq Steps
+# Getting Started with nf-core/rnaseq on Katana
 
-> RNA sequencing analysis pipeline using STAR, RSEM, HISAT2 or Salmon with gene/isoform counts and extensive quality control.
+RNA sequencing analysis pipeline using STAR, RSEM, HISAT2 or Salmon with gene/isoform counts and extensive quality control.
 
 ## Using Nextflow on Katana
 
-By default, we use Ensembl GRCh37. See [here](https://github.com/nf-core/rnaseq/blob/master/conf/igenomes.config) for alternatives, major human and mouse assemblies are installed on Katana. For guidance on modifying [nf-params.json](nf-params.json), see [the official documentation](https://nf-co.re/rnaseq/usage), which includes an interface to generate new params files.
+Nextflow is a workflow manager that can be configured to submit jobs to a cluster, in this case OpenPBS. By default, we use the latest Ensembl reference/annotation. For guidance on modifying [nf-params.json](nf-params.json) including the genome, see [the official documentation](https://nf-co.re/rnaseq/usage), which includes an interface to generate new params files.
 
-1. Create a new project folder:
+> [!NOTE] 
+> The default resource allocations for nf-core are extremely generous and these instructions typically create hundreds of jobs.
+> This may impact your Katana priority. Consider using [nf-optimizer](https://github.com/WalshKieran/nf-optimizer).
+> I am mentioning this at the start because it would require exporting an additonal environment variable in run.pbs.
+
+1. Create a new project folder (if you have sufficient lab scratch or are a non-BABS user, use that instead):
 ```bash
-mkdir -p "/srv/scratch/genomicwf/$USER/<your-project-name>" && cd "$_"
+mkdir -p "/srv/scratch/seqflow/$USER/<your-project-name>" && cd "$_"
 git clone https://github.com/WalshKieran/katana-rnaseq-start.git .
 ```
 2. Download your data (optional):
@@ -28,18 +33,14 @@ To check on a running Katana workflow, use `qstat -u $USER` and `cat .nextflow.l
 
 5. Move your results out of temporary folder. Consider deleting your temporary project folder if you are done.
 ```bash
-mv "/srv/scratch/genomicwf/$USER/<your-project-name>/results/* /srv/scratch/$USER/<your-project-name>"
-#rm -r "/srv/scratch/genomicwf/$USER/<your-project-name>"
+mv "/srv/scratch/seqflow/$USER/<your-project-name>/results/* /srv/scratch/$USER/<your-project-name>"
+#rm -r "/srv/scratch/seqflow/$USER/<your-project-name>"
 ```
 
-> **Note**
-> The default resource allocations for nf-core are extremely generous and these instructions typically create hundreds of jobs.
-> This may impact your Katana priority.
-
-> **Warning**
-> Anything stored in the temporary directory /srv/scratch/genomicwf may be cleared after 3 days. Nextflow can generate over 300GB of ./work files, this directory gives you the option to fix parameters and resume. If your lab has access to more storage, feel free to use that instead.
+> [!WARNING] 
+> Anything stored in the temporary directory /srv/scratch/seqflow may be cleared after 3 days. Nextflow can generate over 300GB of ./work files, this directory gives you the option to fix parameters and resume. If your lab has access to more storage, feel free to use that instead.
 
 - [x] Downloaded iGenomes subset
 - [x] Test with various datasets
+- [ ] Integrate with default [Katana](https://docs.restech.unsw.edu.au) modules
 - [ ] Push finalized Katana config to [nf-core](https://github.com/nf-core/configs)
-- [ ] Push finalized documentation to unsw-restech.github.io

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Fixes PBS column truncation that prevents Nextflow from identifying the server (when no queue is provided)
+# PR to fix this in Nextflow is straightforward (e.g.  qstat -B -f | head -n 1 | cut -d' ' -f2)
+has_param() {
+    local term="$1"
+    shift
+    for arg; do
+        if [[ $arg == "$term" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+if has_param '-B' "$@"; then
+    exec /opt/pbs/bin/qstat -B | sed 's/.restech.un\*/.restech.unsw.edu.au/'
+else
+    exec /opt/pbs/bin/qstat "$@"
+fi

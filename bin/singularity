@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Fixes /tmp filling up issue
+# This is possible to fix directly in nextflow config but it is quite hacky
+# e.g. beforeScript = 'env(){ /usr/bin/env $1 "SINGULARITY_TMPDIR=$TMPDIR" "${@:2}";}'
+
+SINGULARITY_TMPDIR="${SINGULARITY_TMPDIR:-$TMPDIR}" exec /usr/bin/singularity "$@"
